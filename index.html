@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display:flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items: center;
+            height:100vh
+        }
+    </style>
+   
+</head>
+<body> 
+    <h1 id = "headingtotal"></h1><br>
+Enter amount:<input id ="input" type="text"/> <br>
+<button id ="but">+</button>
+<script>  
+    const headingEl = document.querySelector("#headingtotal")
+    let totalexpense = 0
+    
+    function addExpense(){
+        const expense = document.querySelector("#input")
+        const expenseamount = expense.value
+        console.log({expenseamount})
+        const expensenumber = parseInt(expenseamount,10)
+         totalexpense = totalexpense + expensenumber
+        console.log({totalexpense})
+        headingEl.textContent = totalexpense
+    }
+    const element = document.querySelector("#but")
+    element.addEventListener("click",addExpense,false)
+     
+</script>
+</body>
+</html>
