@@ -29,13 +29,14 @@
   <body>
     <nav class="navbar navbar-dark bg-dark">
       <span class="navbar-brand mb-0 h1">Xpers</span>
+      <span class="navbar-brand mb-0 h1" id="headingtotal"></span>
     </nav>
 
     <div class="container-fluid bg-light" style="min-height: 100vh;">
       <div class="container">
         <div class="jumbotron mt-4">
           <div class="input-group mb-3">
-            <h1 id="headingtotal"></h1>
+            <!--<h1 id="headingtotal"></h1>-->
             <br />
             <input
               id="input"
@@ -80,35 +81,11 @@ Enter description:<input id = "inputdesc" type = "text"/><br>
 <div id = "expenseTable"></div>-->
 
     <script>
-      //   function createListItem({ desc, amount }) {
-      //     //destructuring in javascript mdn
-      //     return `<li class="list-group-item d-flex justify-content-between">
-      // 						<div class="d-flex flex-column">
-      // 							${desc}
-      // 							<small class="text-muted">March 11, 2019</small>
-      // 						</div>
-      // 						<div>
-      // 							<span class="px-5">
-      // 								${amount}
-      // 							</span>
-      // 							<button type="button" class="btn btn-outline-danger btn-sm">
-      // 								<i class="fas fa-trash-alt"></i>
-      // 							</button>
-      // 						</div>
-      // 					</li>`;
-      //   }
-
-      //get the heading element
+      //get the References for heading element, table, desc, input respectively
       const headingEl = document.querySelector("#headingtotal");
       let totalexpense = 0;
-
-      //get the ref table
       const expenseTableEl = document.querySelector("#expenseTable");
-
-      //get the reference to desc element
       const inputDescEl = document.querySelector("#inputdesc");
-
-      //get the reference to input element
       const expense = document.querySelector("#input");
 
       const allExpenses = [];
@@ -126,32 +103,38 @@ Enter description:<input id = "inputdesc" type = "text"/><br>
         //get the objects
         expenseItem.desc = textDesc;
         expenseItem.amount = expenseamount;
-        expenseItem.moment = new Date()
+        expenseItem.moment = new Date();
         allExpenses.push(expenseItem);
         // console.clear()
         console.table(allExpenses);
         totalexpense = totalexpense + expensenumber;
         //set the heading element to total expense
-        const someText = `The expense for this month is :${totalexpense}`;
+        const someText = `Total :${totalexpense}`;
         headingEl.textContent = someText;
 
-      
         //show the table
         //  const allExpenseHTML = allExpenses.map(expense=>{return `<div>${expense.amount}::${expense.desc}</div>`})
-        const allExpenseHTML = allExpenses.map((expense) => 
-           createListItem(expense)
-         
+        const allExpenseHTML = allExpenses.map((expense) =>
+          createListItem(expense)
         );
         const joinedAllExpenseHTML = allExpenseHTML.join("");
         expenseTableEl.innerHTML = joinedAllExpenseHTML;
-        
-        function getDateString(moment){ //destructuring
-            return moment.toLocaleDateString('en-Us',{year:'numeric',month:'long',day:'numeric'})                                                                                          
+
+        //To get Date String
+        function getDateString(moment) {
+          //destructuring
+          return moment.toLocaleDateString("en-Us", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
         }
 
-        //View 
-        function createListItem({desc,amount,moment}){ //destructuring
-            return `<li class="list-group-item d-flex justify-content-between">
+
+        //View
+        function createListItem({ desc, amount, moment }) {
+          //destructuring
+          return `<li class="list-group-item d-flex justify-content-between">
 	 						<div class="d-flex flex-column">
 								${desc}
                             <small class="text-muted">${getDateString(moment)}
@@ -161,7 +144,10 @@ Enter description:<input id = "inputdesc" type = "text"/><br>
 	 							<span class="px-5">
 	 								${amount}
 	 							</span>
-								<button type="button" class="btn btn-outline-danger btn-sm">
+                                <button type="button" 
+                                class="btn btn-outline-danger btn-sm" 
+                                onclick="deleteItem(${moment.valueOf()})"
+                               >
 									<i class="fas fa-trash-alt"></i>
 								</button>
 							</div>
@@ -171,6 +157,14 @@ Enter description:<input id = "inputdesc" type = "text"/><br>
       //get the button text
       const element = document.querySelector("#but");
       element.addEventListener("click", addExpense, false);
+      
+      function deleteItem(dateValue) {
+          console.log("delete item",dateValue);
+          for (let i = 0; i<allExpenses.length; i++){
+              if (allExpenses[i].moment.valueOf() === dateValue)
+           console.log("item found",allExpenses[i])
+          }
+        }
     </script>
   </body>
 </html>
