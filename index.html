@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-   <!--<style>
+    <!--<style>
         body{
             display:flex;
             flex-direction: column;
@@ -12,149 +12,165 @@
             align-items: center;
             height:100vh
         }
-    </style>--> 
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-     crossorigin="anonymous">
-     <script
-     defer
-     src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
-     integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
-     crossorigin="anonymous"
- ></script>
-</head>
-<body> 
+    </style>-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+      integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1">Xpers</span>
+      <span class="navbar-brand mb-0 h1">Xpers</span>
     </nav>
 
-    <div class="container-fluid bg-light" style="min-height: 100vh">
-        <div class="container">
-            <div class="jumbotron mt-4">
-                <div class="input-group mb-3">
-                    <h1 id = "headingtotal"></h1><br>
-                    <input
-                       id ="input"
-                        type="text"
-                        class="form-control"
-                        placeholder="Amount spent"
-                        aria-label="Amount spent"
-                        aria-describedby="spent in rupee"
-                    />
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="spent in rupee">₹</span>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="spent at">@</span>
-                    </div>
-                    <input
-                        id = "inputdesc"
-                        type="text"
-                        class="form-control"
-                        placeholder="spent On"
-                        aria-label="spent On"
-                        aria-describedby="spent at"
-                    />
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="button" id="but">Add</button>
-                    </div>
-                </div>
+    <div class="container-fluid bg-light" style="min-height: 100vh;">
+      <div class="container">
+        <div class="jumbotron mt-4">
+          <div class="input-group mb-3">
+            <h1 id="headingtotal"></h1>
+            <br />
+            <input
+              id="input"
+              type="text"
+              class="form-control"
+              placeholder="Amount spent"
+              aria-label="Amount spent"
+              aria-describedby="spent in rupee"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text" id="spent in rupee">₹</span>
             </div>
-            <div>
-                <ul class="list-group"
-             id = "expenseTable"></ul></div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="spent at">@</span>
+            </div>
+            <input
+              id="inputdesc"
+              type="text"
+              class="form-control"
+              placeholder="spent On"
+              aria-label="spent On"
+              aria-describedby="spent at"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" type="button" id="but">
+                Add
+              </button>
+            </div>
+          </div>
         </div>
+        <div>
+          <ul class="list-group" id="expenseTable"></ul>
+        </div>
+      </div>
     </div>
 
-
-    
-  
-<!--Enter amount:<input id ="input" type="text"/> <br>
+    <!--Enter amount:<input id ="input" type="text"/> <br>
 Enter description:<input id = "inputdesc" type = "text"/><br>
 <button id ="but">+</button>
 <div id = "expenseTable"></div>-->
 
-<script>  
-    //get the heading element
-    const headingEl = document.querySelector("#headingtotal")
-    let totalexpense = 0
+    <script>
+      //   function createListItem({ desc, amount }) {
+      //     //destructuring in javascript mdn
+      //     return `<li class="list-group-item d-flex justify-content-between">
+      // 						<div class="d-flex flex-column">
+      // 							${desc}
+      // 							<small class="text-muted">March 11, 2019</small>
+      // 						</div>
+      // 						<div>
+      // 							<span class="px-5">
+      // 								${amount}
+      // 							</span>
+      // 							<button type="button" class="btn btn-outline-danger btn-sm">
+      // 								<i class="fas fa-trash-alt"></i>
+      // 							</button>
+      // 						</div>
+      // 					</li>`;
+      //   }
 
-    //get the ref table
-    const expenseTableEl = document.querySelector("#expenseTable")
+      //get the heading element
+      const headingEl = document.querySelector("#headingtotal");
+      let totalexpense = 0;
 
-    //get the reference to desc element
-    const inputDescEl = document.querySelector("#inputdesc")
+      //get the ref table
+      const expenseTableEl = document.querySelector("#expenseTable");
 
-    //get the reference to input element
-     const expense = document.querySelector("#input")
-    
-    const allExpenses = []
+      //get the reference to desc element
+      const inputDescEl = document.querySelector("#inputdesc");
 
-    //on button click add input element to total text
-    function addExpense(){
-       const expenseItem = {}
+      //get the reference to input element
+      const expense = document.querySelector("#input");
 
-       //read the value from the input text
-        const expenseamount = expense.value
+      const allExpenses = [];
+
+      //on button click add input element to total text
+      function addExpense() {
+        const expenseItem = {};
+
+        //read the value from the input text
+        const expenseamount = expense.value;
         //read the value from the desc element
-        const textDesc = inputDescEl.value
+        const textDesc = inputDescEl.value;
         //convert it into number
-        const expensenumber = parseInt(expenseamount,10)
-
-        expenseItem.desc =textDesc
-        expenseItem.amount = expenseamount
-        allExpenses.push(expenseItem)
-       // console.clear()
-        console.table(allExpenses)
-        totalexpense = totalexpense + expensenumber
+        const expensenumber = parseInt(expenseamount, 10);
+        //get the objects
+        expenseItem.desc = textDesc;
+        expenseItem.amount = expenseamount;
+        expenseItem.moment = new Date()
+        allExpenses.push(expenseItem);
+        // console.clear()
+        console.table(allExpenses);
+        totalexpense = totalexpense + expensenumber;
         //set the heading element to total expense
-        const someText = `The expense for this month is :${totalexpense}`
-        headingEl.textContent = someText
+        const someText = `The expense for this month is :${totalexpense}`;
+        headingEl.textContent = someText;
 
-       //show the table
-    //    const data1 = allExpenses[0]
-    //    const data2 = allExpenses[1]
+      
+        //show the table
+        //  const allExpenseHTML = allExpenses.map(expense=>{return `<div>${expense.amount}::${expense.desc}</div>`})
+        const allExpenseHTML = allExpenses.map((expense) => 
+           createListItem(expense)
+         
+        );
+        const joinedAllExpenseHTML = allExpenseHTML.join("");
+        expenseTableEl.innerHTML = joinedAllExpenseHTML;
+        
+        function getDateString(moment){ //destructuring
+            return moment.toLocaleDateString('en-Us',{year:'numeric',month:'long',day:'numeric'})                                                                                          
+        }
 
-    //    const data1Text = `Expense: ${data1.amount}::Desc: ${data1.desc}`
-    //    const data2Text = `Expense: ${data2.amount}::Desc: ${data2.desc}`
-
-    //    const tableText = `
-    //    <div>${data1Text}</div>
-    //    <div>${data2Text}</div>
-    //    `
-
-     // expenseTableEl.innerHTML = data1Text + data2Text
-      // expenseTableEl.textContent = data1Text + data2Text
-
-  //  const allExpenseHTML = allExpenses.map(expense=>{return `<div>${expense.amount}::${expense.desc}</div>`})
-    const allExpenseHTML = allExpenses.map(expense=>
-    {return `
-        <li class="list-group-item d-flex justify-content-between">
-							<div class="d-flex flex-column">
-								${expense.desc}
-								<small class="text-muted">March 11, 2019</small>
+        //View 
+        function createListItem({desc,amount,moment}){ //destructuring
+            return `<li class="list-group-item d-flex justify-content-between">
+	 						<div class="d-flex flex-column">
+								${desc}
+                            <small class="text-muted">${getDateString(moment)}
+                            </small>
 							</div>
-							<div>
-								<span class="px-5">
-									${expense.amount}
-								</span>
+						<div>
+	 							<span class="px-5">
+	 								${amount}
+	 							</span>
 								<button type="button" class="btn btn-outline-danger btn-sm">
 									<i class="fas fa-trash-alt"></i>
 								</button>
 							</div>
-						</li>
-        `
-     })
-    const joinedAllExpenseHTML = allExpenseHTML.join("")
-    expenseTableEl.innerHTML = joinedAllExpenseHTML
-     
-    }
-    //get the button text
-    const element = document.querySelector("#but")
-    element.addEventListener("click",addExpense,false)
-     
-</script>
-</body>
+	 					</li>`;
+        }
+      }
+      //get the button text
+      const element = document.querySelector("#but");
+      element.addEventListener("click", addExpense, false);
+    </script>
+  </body>
 </html>
